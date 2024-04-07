@@ -31,3 +31,47 @@
   background-color: rgb(186, 233, 255);
   transition-duration: 0.4s;
 }
+.addingPostContainer {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(31, 158, 255);
+  width: 25%;
+  height: fit-content;
+  padding-bottom: 15px;
+  border-radius: 10px;
+  justify-content: flex-start;
+}
+input {
+  width: 95%;
+  margin-top: 10px;
+}
+label {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 2.5%;
+  margin-top: 10px;
+  color: white;
+  font-family: sans-serif;
+}
+.addBtn {
+  padding: 10px 15px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  margin-left: 3%;
+  margin-top: 15px;
+}
+.addBtn:hover {
+  background-color: rgb(255, 143, 143);
+  transition-duration: 0.4s;
+}
+.active {
+  display: flex;
+}

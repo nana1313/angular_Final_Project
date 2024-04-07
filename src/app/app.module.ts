@@ -8,6 +8,7 @@ import { FirstPageComponent } from './header/first-page/first-page.component';
 import { AlbumComponent } from './header/album/album.component';
 import { TodoComponent } from './header/todo/todo.component';
 import { HeaderComponent } from './header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { HeaderComponent } from './header/header.component';
     FirstPageComponent,
     AlbumComponent,
     TodoComponent,
+
     HeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

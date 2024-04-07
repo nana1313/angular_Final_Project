@@ -1,5 +1,18 @@
 <div class="backgroundContainer">
   <div class="buttonDiv">
-    <button class="addPostBtn">Add Post</button>
+    <button (click)="openPostForm()" class="addPostBtn">Add Post</button>
+  </div>
+  <div [ngClass]="{ active: isActive }" class="addingPostContainer">
+    <form (ngSubmit)="onSubmit(addPostForm.value)" [formGroup]="addPostForm">
+      <label>Post Author...</label>
+      <input formControlName="author" type="text" />
+      <label>Title </label>
+      <input formControlName="title" type="text" />
+      <label>Body</label>
+      <input formControlName="body" type="text" />
+      <button (click)="onSubmitAddingPost()" class="addBtn" type="submit">
+        Add
+      </button>
+    </form>
   </div>
 </div>
