@@ -1,0 +1,36 @@
+.headerContainer {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 200px;
+}
+img {
+  height: 60px;
+  width: 60px;
+}
+img:hover {
+  cursor: pointer;
+}
+.routes {
+  display: flex;
+  gap: 30px;
+}
+a {
+  padding: 10px 15px;
+  font-family: sans-serif;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+}
+.active {
+  background-color: red;
+  transition-duration: 0.5s;
+  color: white;
+}
+a:hover {
+  background-color: red;
+  transition-duration: 0.5s;
+  color: white;
+}

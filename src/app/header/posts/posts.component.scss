@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.backgroundContainer {
+  width: 100vw;
+  height: 90vh;
+  background-image: url(../../../assets/imgs/geobackground.jpg);
+  border-top: 1px solid gray;
+}
+.buttonDiv {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.addPostBtn {
+  background-color: rgb(68, 117, 253);
+  color: white;
+  font-family: sans-serif;
+  padding: 10px 15px;
+  border: none;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+.addPostBtn:hover {
+  background-color: rgb(186, 233, 255);
+  transition-duration: 0.4s;
+}
