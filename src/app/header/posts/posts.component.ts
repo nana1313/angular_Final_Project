@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { User } from '../../interfaces/user.interface';
 import { Body } from '../../interfaces/body.interface';
-// import { Title } from '../../interfaces/title.inferface';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -37,12 +36,11 @@ export class PostsComponent implements OnInit {
     });
   }
   onSubmit(formValue: any) {
-    // Assuming formValue is an object containing the form values
-    // You can access the form values using formValue.propertyName
+   
     const title = 'title';
     const body = 'body';
-    const user = 'user'; // Or any key you want
-    const value = formValue; // Assuming formValue is an object containing form values
+    const user = 'user'; 
+    const value = formValue; 
 
     // Store data using your local storage service
     // this.LocalStore.saveData(title, value.title);
@@ -75,11 +73,11 @@ export class PostsComponent implements OnInit {
 
   addNewPost(postUser: String, postTitle: String, postBody: String) {
     if (!postUser.trim() || !postTitle.trim() || !postBody.trim()) {
-      return; // Exit the function to prevent adding the post
+      return; 
     }
 
     const newPost = {
-      userId: this.users.length + 1, // Use the current timestamp as a unique ID
+      userId: this.users.length + 1,
       userName: postUser.trim(),
       title: postTitle.trim(),
       body: postBody.trim(),
@@ -113,6 +111,7 @@ export class PostsComponent implements OnInit {
     this.apiService.getBody().subscribe((bodyText) => {
       this.bodyText = bodyText;
       console.log('body', this.bodyText);
+      
     });
   }
 }

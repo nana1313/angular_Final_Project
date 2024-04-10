@@ -45,7 +45,6 @@ export class ApiService {
       userDataBody
     );
 
-    // Combine the two observables using forkJoin
     return forkJoin([userObservable, postObservable]);
   }
 }
