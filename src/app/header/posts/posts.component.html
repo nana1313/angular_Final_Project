@@ -3,16 +3,35 @@
     <button (click)="openPostForm()" class="addPostBtn">Add Post</button>
   </div>
   <div [ngClass]="{ active: isActive }" class="addingPostContainer">
-    <form (ngSubmit)="onSubmit(addPostForm.value)" [formGroup]="addPostForm">
+    <form
+      (ngSubmit)="onSubmit(addPostForm.value)"
+      [formGroup]="addPostForm"
+      (submit)="
+        addNewPost(postUser.value, postTitle.value, postBody.value);
+        $event.preventDefault()
+      "
+    >
       <label>Post Author...</label>
-      <input formControlName="author" type="text" />
+      <input formControlName="author" id="author" type="text" #postUser />
       <label>Title </label>
-      <input formControlName="title" type="text" />
+      <input formControlName="title" id="title" type="text" #postTitle />
       <label>Body</label>
-      <input formControlName="body" type="text" />
-      <button (click)="onSubmitAddingPost()" class="addBtn" type="submit">
-        Add
-      </button>
+      <input formControlName="body" id="body" type="text" #postBody />
+      <button class="addBtn" type="submit">Add</button>
     </form>
   </div>
+
+  <table>
+    <tr>
+      <th>POST'S USER</th>
+      <th>TITLE</th>
+      <th>BODY</th>
+    </tr>
+
+    <tr (click)="tbOnClick(1, body.id)" *ngFor="let body of bodyText">
+      <td>{{ getUserName(body.userId) }}</td>
+      <td>{{ body.title }}</td>
+      <td>{{ body.body }}</td>
+    </tr>
+  </table>
 </div>
