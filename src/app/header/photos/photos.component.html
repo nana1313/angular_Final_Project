@@ -1,0 +1,10 @@
+<div class="backgroundContainer">
+  <div class="contentMainContainer">
+    <div class="contentCenter">
+      <div *ngFor="let photo of photos" class="content">
+        <img [src]="photo.url" />
+        <p><span>Title: </span>{{ photo.title }}</p>
+      </div>
+    </div>
+  </div>
+</div>

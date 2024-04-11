@@ -4,12 +4,13 @@ import { AlbumComponent } from './header/album/album.component';
 import { FirstPageComponent } from './header/first-page/first-page.component';
 import { TodoComponent } from './header/todo/todo.component';
 import { PostsComponent } from './header/posts/posts.component';
-
+import { PhotosComponent } from './header/photos/photos.component';
 const routes: Routes = [
   { path: '', redirectTo: '/firstPage', pathMatch: 'full' },
   { path: 'firstPage', component: FirstPageComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'album', component: AlbumComponent },
+  { path: 'photo', component: PhotosComponent },
   { path: 'todo', component: TodoComponent },
   { path: '**', redirectTo: 'firstPage' },
 ];

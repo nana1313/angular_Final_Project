@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { User } from '../../interfaces/user.interface';
 import { Body } from '../../interfaces/body.interface';
@@ -22,31 +22,43 @@ export class PostsComponent implements OnInit {
   users!: User[];
   bodyText!: Body[];
   titleText!: Body[];
-
   addPostForm: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private LocalStore: LocalstorageService,
+    private localstorageService: LocalstorageService,
     private apiService: ApiService
   ) {
     this.addPostForm = this.fb.group({
-      title: [''],
-      body: [''],
-      author: [''],
+      title: ['', [Validators.required]],
+      body: ['', [Validators.required]],
+      author: ['', [Validators.required]],
     });
   }
   onSubmit(formValue: any) {
-   
-    const title = 'title';
-    const body = 'body';
-    const user = 'user'; 
-    const value = formValue; 
+    this.users = [
+      {
+        id: this.bodyText.length + 1,
+        name: formValue.author,
+        body: '',
+        username: '',
+      },
+      ...this.users,
+    ];
+    this.bodyText = [
+      {
+        userId: this.bodyText.length + 1,
+        id: this.bodyText.length + 1,
+        title: formValue.title,
+        body: formValue.body,
+      },
+      ...this.bodyText,
+    ];
 
     // Store data using your local storage service
-    // this.LocalStore.saveData(title, value.title);
-    // this.LocalStore.saveData(body, value.body);
-    // this.LocalStore.saveData(user, value.user);
-    // console.log('data', this.LocalStore.getData('postauthor'));
+    // this.localstorageService.saveData(title, value.title);
+    // this.localstorageService.saveData(body, value.body);
+    // this.localstorageService.saveData(user, value.user);
+    // console.log('data', this.localstorageService.getData('postauthor'));
   }
   get title() {
     return this.addPostForm.get('title');
@@ -62,6 +74,11 @@ export class PostsComponent implements OnInit {
   tbOnClick(userId: number, bodyId: number) {
     console.log(userId, bodyId);
   }
+  saveToLocalStorage(newPost: any) {
+    let posts = JSON.parse(localStorage.getItem('posts') || '[]');
+    posts.unshift(newPost);
+    localStorage.setItem('posts', JSON.stringify(posts));
+  }
 
   // getUserName(id: number) {
   //   return this.users.find((user) => user.id === this.bodyText[].userId)?.name;
@@ -73,7 +90,7 @@ export class PostsComponent implements OnInit {
 
   addNewPost(postUser: String, postTitle: String, postBody: String) {
     if (!postUser.trim() || !postTitle.trim() || !postBody.trim()) {
-      return; 
+      return;
     }
 
     const newPost = {
@@ -81,22 +98,20 @@ export class PostsComponent implements OnInit {
       userName: postUser.trim(),
       title: postTitle.trim(),
       body: postBody.trim(),
-      bodyId: this.bodyText.length + 1,
+      id: this.bodyText.length + 1,
     };
 
-    // let posts = JSON.parse(localStorage.getItem('posts') || '[]');
-    // posts.unshift(newPost);
-    // localStorage.setItem('posts', JSON.stringify(posts));
-    console.log(localStorage);
-    console.log(postUser);
     this.apiService.addNewUser(newPost).subscribe(
       (response) => {
         console.log('New user and post added successfully:', response);
-        // Handle the response as needed
+        this.saveToLocalStorage(newPost);
+        // this.bodyText = [newPost, …this.bodyText]
+        this.bodyText.push(newPost);
+
+        this.addPostForm.reset();
       },
       (error) => {
         console.error('Error adding new user and post:', error);
-        // Handle the error as needed
       }
     );
   }
@@ -105,13 +120,10 @@ export class PostsComponent implements OnInit {
     //  this.LocalStore.saveData('postauthor', this.addPostForm.get('author'));
     this.apiService.getUsers().subscribe((users) => {
       this.users = users;
-      console.log('user', this.users);
     });
 
     this.apiService.getBody().subscribe((bodyText) => {
       this.bodyText = bodyText;
-      console.log('body', this.bodyText);
-      
     });
   }
 }

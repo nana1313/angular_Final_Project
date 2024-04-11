@@ -1,0 +1,43 @@
+.backGroundContainer {
+  width: 100vw;
+  height: fit-content;
+  background-image: url(../../../assets/imgs/backgr.png);
+  border-top: 1px solid gray;
+}
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin-top: 90px;
+  flex-direction: column;
+  gap: 10px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  width: 70vw;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px -7px rgba(0, 0, 0, 0.75);
+}
+span {
+  color: rgb(16, 217, 253);
+  margin-right: 10px;
+}
+p {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+img {
+  width: 20px;
+  height: 20px;
+}
+.completion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -10,6 +10,7 @@ import { TodoComponent } from './header/todo/todo.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PhotosComponent } from './header/photos/photos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     TodoComponent,
 
     HeaderComponent,
+    PhotosComponent,
   ],
   imports: [
     BrowserModule,

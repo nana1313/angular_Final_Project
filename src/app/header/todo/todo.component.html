@@ -1,1 +1,18 @@
-<p>todo works!</p>
+<div class="backGroundContainer">
+  <div class="mainContainer">
+    <div *ngFor="let todo of todos" class="content">
+      <p><span>Title:</span>{{ todo.title }}</p>
+      <div class="completion">
+        <span>Completion:</span>
+        <img
+          [src]="
+            todo.completed
+              ? '../../../assets/imgs/true.png'
+              : '../../../assets/imgs/false1.png'
+          "
+          alt="Completion Icon"
+        />
+      </div>
+    </div>
+  </div>
+</div>

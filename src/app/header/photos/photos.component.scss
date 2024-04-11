@@ -1,0 +1,46 @@
+.backgroundContainer {
+  width: 100vw;
+  height: fit-content;
+  background-image: url(../../../assets/imgs/backgr.png);
+  border-top: 1px solid gray;
+}
+.contentMainContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100vw;
+  height: fit-content;
+  gap: 30px;
+  margin-top: 70px;
+  align-items: center;
+  justify-content: center;
+}
+.contentCenter {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  justify-content: center;
+  width: 50%;
+  gap: 30px;
+  align-items: center;
+}
+.content {
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  height: 370px;
+}
+img {
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+}
+span {
+  color: aqua;
+  margin: 0px 5x;
+}
+p {
+  color: black;
+  font-weight: bold;
+}

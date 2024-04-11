@@ -17,7 +17,9 @@
       <input formControlName="title" id="title" type="text" #postTitle />
       <label>Body</label>
       <input formControlName="body" id="body" type="text" #postBody />
-      <button class="addBtn" type="submit">Add</button>
+      <button [disabled]="!addPostForm.valid" class="addBtn" type="submit">
+        Add
+      </button>
     </form>
   </div>
 
@@ -27,11 +29,10 @@
       <th>TITLE</th>
       <th>BODY</th>
     </tr>
-
-    <tr (click)="tbOnClick(1, body.id)" *ngFor="let body of bodyText">
-      <td>{{ getUserName(body.userId) }}</td>
-      <td>{{ body.title }}</td>
-      <td>{{ body.body }}</td>
+    <tr (click)="tbOnClick(post.userId, post.id)" *ngFor="let post of bodyText">
+      <td>{{ getUserName(post.userId) }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.body }}</td>
     </tr>
   </table>
 </div>

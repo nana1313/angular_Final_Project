@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, forkJoin } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 import { Body } from '../interfaces/body.interface';
+import { Album } from '../interfaces/album.interface';
+import { Todo } from '../interfaces/todos.interface';
+import { Photo } from '../interfaces/photos.interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,9 +18,22 @@ export class ApiService {
   getBody(): Observable<Body[]> {
     return this.http.get<Body[]>('https://jsonplaceholder.typicode.com/posts');
   }
+  getAlbum(): Observable<Album[]> {
+    return this.http.get<Album[]>(
+      'https://jsonplaceholder.typicode.com/albums'
+    );
+  }
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
+  }
+  getPhotos(): Observable<Photo[]> {
+    return this.http.get<Photo[]>(
+      'https://jsonplaceholder.typicode.com/albums/1/photos'
+    );
+  }
 
   addNewUser(newPost: {
-    bodyId: Number;
+    id: Number;
     userName: String;
     title: String;
     body: String;
@@ -27,7 +43,7 @@ export class ApiService {
       title: newPost.title,
       body: newPost.body,
       userId: newPost.userId,
-      id: newPost.bodyId,
+      id: newPost.id,
     };
     const userData = {
       name: newPost.userName,
