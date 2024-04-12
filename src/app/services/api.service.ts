@@ -24,6 +24,7 @@ export class ApiService {
       'https://jsonplaceholder.typicode.com/albums'
     );
   }
+ 
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
   }
@@ -37,7 +38,23 @@ export class ApiService {
       'https://jsonplaceholder.typicode.com/albums/1/photos'
     );
   }
-
+  addNewComment(newComment: {
+    postId: Number;
+    id: Number;
+    name: String;
+    body: String;
+  }): Observable<any> {
+    const commentData = {
+      body: newComment.body,
+      name: newComment.name,
+      id: newComment.id,
+      postId: newComment.postId,
+    };
+    return this.http.post(
+      'https://jsonplaceholder.typicode.com/posts/1/comments',
+      commentData
+    );
+  }
   addNewUser(newPost: {
     id: Number;
     userName: String;

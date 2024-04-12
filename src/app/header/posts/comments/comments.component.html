@@ -7,7 +7,7 @@
     />
     <h2>Title</h2>
     <div class="hrDiv"></div>
-    <p>1</p>
+    <p></p>
     <h2>Body</h2>
     <div class="hrDiv"></div>
     <p class="firstText">2</p>
@@ -26,11 +26,16 @@
     <p class="addP">Add Comment</p>
     <div class="addCommentContainer">
       <img class="avatar" src="../../../../assets/imgs/avatar.jpg" />
-      <form>
+      <form
+        (submit)="
+          addNewComment(name.value, commentBody.value); $event.preventDefault()
+        "
+        [formGroup]="addCommentForm"
+      >
         <label class="nameLabel" for="name">Name</label>
-        <input name="name" />
+        <input name="name" formControlName="userName" #name />
         <label>Body</label>
-        <input />
+        <input formControlName="body" #commentBody />
         <button class="addCommentBtn" type="submit">Add</button>
       </form>
     </div>

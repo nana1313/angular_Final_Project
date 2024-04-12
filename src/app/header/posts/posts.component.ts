@@ -5,6 +5,7 @@ import { User } from '../../interfaces/user.interface';
 import { Body } from '../../interfaces/body.interface';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -24,7 +25,6 @@ export class PostsComponent implements OnInit {
 
   users!: User[];
   bodyText!: Body[];
-  titleText!: Body[];
   addPostForm: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -80,7 +80,7 @@ export class PostsComponent implements OnInit {
   // }
   saveToLocalStorage(newPost: any) {
     let posts = JSON.parse(localStorage.getItem('posts') || '[]');
-    posts.unshift(newPost);
+    posts.push(newPost);
     localStorage.setItem('posts', JSON.stringify(posts));
   }
 
