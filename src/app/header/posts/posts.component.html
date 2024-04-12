@@ -29,7 +29,7 @@
       <th>TITLE</th>
       <th>BODY</th>
     </tr>
-    <tr (click)="tbOnClick(post.userId, post.id)" *ngFor="let post of bodyText">
+    <tr (click)="goToPost(post.id)" *ngFor="let post of bodyText">
       <td>{{ getUserName(post.userId) }}</td>
       <td>{{ post.title }}</td>
       <td>{{ post.body }}</td>

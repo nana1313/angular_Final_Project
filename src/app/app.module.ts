@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PhotosComponent } from './header/photos/photos.component';
+import { CommentsComponent } from './header/posts/comments/comments.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { PhotosComponent } from './header/photos/photos.component';
 
     HeaderComponent,
     PhotosComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { Body } from '../interfaces/body.interface';
 import { Album } from '../interfaces/album.interface';
 import { Todo } from '../interfaces/todos.interface';
 import { Photo } from '../interfaces/photos.interface';
+import { Comments } from '../interfaces/comments.interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -25,6 +26,11 @@ export class ApiService {
   }
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
+  }
+  getComments(): Observable<Comments[]> {
+    return this.http.get<Comments[]>(
+      'https://jsonplaceholder.typicode.com/posts/1/comments'
+    );
   }
   getPhotos(): Observable<Photo[]> {
     return this.http.get<Photo[]>(

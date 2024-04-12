@@ -4,7 +4,7 @@ import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { User } from '../../interfaces/user.interface';
 import { Body } from '../../interfaces/body.interface';
 import { ApiService } from 'src/app/services/api.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -18,6 +18,9 @@ export class PostsComponent implements OnInit {
   onSubmitAddingPost() {
     // console.log(this.addPostForm.value);
   }
+  goToPost(postId: number): void {
+    this.router.navigate(['/posts', postId]);
+  }
 
   users!: User[];
   bodyText!: Body[];
@@ -26,7 +29,8 @@ export class PostsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private localstorageService: LocalstorageService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) {
     this.addPostForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -71,9 +75,9 @@ export class PostsComponent implements OnInit {
   }
   newUser = '';
   storage = 'local-app';
-  tbOnClick(userId: number, bodyId: number) {
-    console.log(userId, bodyId);
-  }
+  // tbOnClick(userId: number, bodyId: number) {
+  //   console.log(userId, bodyId);
+  // }
   saveToLocalStorage(newPost: any) {
     let posts = JSON.parse(localStorage.getItem('posts') || '[]');
     posts.unshift(newPost);

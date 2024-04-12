@@ -1,0 +1,151 @@
+.backgroundContainer {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../../../../assets/imgs/backgr.png);
+  border-top: 1px solid gray;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.editMainContainer {
+  height: 80%;
+  background-color: aliceblue;
+  width: 35%;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  box-shadow: -9px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.hrDiv {
+  height: 1px;
+  width: 100%;
+  background-color: rgb(232, 232, 232);
+}
+h2 {
+  color: aqua;
+}
+.firstText {
+  margin-top: 25px;
+}
+.secondText,
+.firstText {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+.secondText {
+  width: 270px;
+  height: 60%;
+}
+.editBtn {
+  background-color: rgb(255, 213, 0);
+  padding: 12px 25px;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  margin-top: 40px;
+}
+.backArrow {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.commentsMainContainer {
+  height: 75%;
+  width: 35%;
+}
+
+.commentsContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-color: red white;
+  scroll-behavior: smooth;
+
+  height: 75%;
+  margin-top: 30px;
+  width: 100%;
+  gap: 5px;
+}
+.commentsContainer::-webkit-scrollbar {
+  width: 16px;
+}
+
+.commentsContainer::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.commentsContainer::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+}
+.addP {
+  font-weight: bold;
+}
+.avatar {
+  width: 60px;
+  height: 60px;
+}
+.commentCardContainer {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+
+  gap: 15px;
+}
+h3 {
+  color: rgb(0, 76, 255);
+  margin: 0;
+  margin-bottom: 10px;
+}
+.addCommentContainer {
+  padding: 10px 160px;
+  background-color: rgb(233, 233, 233);
+  height: 25%;
+  width: calc(100% - 330px);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.addCommentContainer .avatar {
+  margin-bottom: 55px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 60%;
+  gap: 15px;
+}
+.nameLabel {
+  color: rgb(0, 76, 255);
+}
+label {
+  font-weight: bold;
+}
+input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+.addCommentBtn {
+  background-color: gray;
+  padding: 5px 20px;
+  width: fit-content;
+  color: white;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  height: fit-content;
+  align-self: flex-end;
+}

@@ -6,10 +6,10 @@
         <th>TITLE</th>
         <th>NUMBER OF PHOTOS</th>
       </tr>
-      <tr routerLink="/photo" *ngFor="let album of Albums">
+      <tr (click)="goToPhoto(album.id)" *ngFor="let album of Albums">
         <td>{{ getUserName(album.userId) }}</td>
         <td>{{ album.title }}</td>
-        <td>50</td>
+        <td>{{ getPhotoNum(album.userId) }}</td>
       </tr>
     </table>
   </div>
