@@ -50,9 +50,10 @@ export class AlbumComponent implements OnInit {
     this.apiService.getUsers().subscribe((users) => {
       this.users = users;
     });
-    this.photoService.getPhotos().subscribe((photos) => {
-      this.photos = photos;
-    });
+    // this.photoService.getPhotos().subscribe((photos) => {
+    //   this.photos = photos;
+    // });
+    // });
   }
   loadPhotosCount(): void {
     this.Albums.forEach((album) => {
