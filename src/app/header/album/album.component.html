@@ -9,7 +9,7 @@
       <tr (click)="goToPhoto(album.id)" *ngFor="let album of Albums">
         <td>{{ getUserName(album.userId) }}</td>
         <td>{{ album.title }}</td>
-        <td>{{ getPhotoNum(album.userId) }}</td>
+        <td>{{ photosCountMap[album.id] }}</td>
       </tr>
     </table>
   </div>

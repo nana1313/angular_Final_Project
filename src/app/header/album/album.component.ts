@@ -22,6 +22,7 @@ export class AlbumComponent implements OnInit {
   Albums!: Album[];
   users!: User[];
   photos!: Photo[];
+  photosCountMap: { [key: number]: number } = {};
   getUserName(userId: number): String {
     const user = this.users?.find((user) => user.id === userId);
     return user ? user.name : '';
@@ -44,12 +45,20 @@ export class AlbumComponent implements OnInit {
   ngOnInit(): void {
     this.albumService.getAlbum().subscribe((Albums) => {
       this.Albums = Albums;
+      this.loadPhotosCount();
     });
     this.apiService.getUsers().subscribe((users) => {
       this.users = users;
     });
     this.photoService.getPhotos().subscribe((photos) => {
       this.photos = photos;
+    });
+  }
+  loadPhotosCount(): void {
+    this.Albums.forEach((album) => {
+      this.apiService.getPhotosCount(album.id).subscribe((photos: Photo[]) => {
+        this.photosCountMap[album.id] = photos.length; // Store the number of photos for the album
+      });
     });
   }
 }

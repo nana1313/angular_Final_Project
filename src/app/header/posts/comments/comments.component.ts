@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Body } from '../../../interfaces/body.interface';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -13,13 +14,18 @@ import { Body } from '../../../interfaces/body.interface';
 export class CommentsComponent implements OnInit {
   comments!: Comments[];
   addCommentForm: FormGroup;
-  postId!: string;
   bodyData!: Body[];
-
+  postTitle: String = '';
+  postBody: String = '';
+  parseNumber!: number;
+  postId!: number;
+  editedTitle: String = '';
+  editedBody: String = '';
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {
     this.addCommentForm = this.fb.group({
       userName: ['', [Validators.required]],
@@ -49,6 +55,8 @@ export class CommentsComponent implements OnInit {
 
   closeModal() {
     this.isModalOpen = false;
+    this.editedTitle = this.postTitle;
+    this.editedBody = this.postBody;
   }
   addNewComment(name: String, commentBody: String) {
     if (!name.trim() || !commentBody.trim()) {
@@ -118,5 +126,27 @@ export class CommentsComponent implements OnInit {
       console.log('BodyDATA', this.bodyData);
       console.log('Post ID:', this.postId);
     });
+    const currentUrl = window.location.href;
+    const matches = currentUrl.match(/\d+$/);
+    if (matches) {
+      this.parseNumber = parseInt(matches[0], 10);
+      this.postId = this.parseNumber;
+      this.loadPostTitleAndBody();
+    }
+  }
+  loadPostTitleAndBody(): void {
+    this.http
+      .get<Body>(
+        `https://jsonplaceholder.typicode.com/posts/${this.parseNumber}`
+      )
+      .subscribe(
+        (post) => {
+          this.postTitle = post.title;
+          this.postBody = post.body;
+        },
+        (error) => {
+          console.error('Error loading post:', error);
+        }
+      );
   }
 }

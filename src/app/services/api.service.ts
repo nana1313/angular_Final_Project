@@ -1,16 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, forkJoin, catchError, throwError } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 import { Body } from '../interfaces/body.interface';
 import { Album } from '../interfaces/album.interface';
 import { Todo } from '../interfaces/todos.interface';
+
 import { Photo } from '../interfaces/photos.interface';
 import { Comments } from '../interfaces/comments.interface';
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  private apiUrl = 'https://jsonplaceholder.typicode.com';
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
@@ -32,6 +34,11 @@ export class ApiService {
     return this.http.get<Comments[]>(
       'https://jsonplaceholder.typicode.com/posts/1/comments'
     );
+  }
+  getPhotosCount(albumId: number): Observable<Photo[]> {
+    return this.http
+      .get<Photo[]>(`${this.apiUrl}/albums/${albumId}/photos`)
+      .pipe(catchError(handleFunction));
   }
   // getPhotos(): Observable<Photo[]> {
   //   return this.http.get<Photo[]>(
@@ -86,4 +93,8 @@ export class ApiService {
 
     return forkJoin([userObservable, postObservable]);
   }
+}
+function handleFunction(error: HttpErrorResponse) {
+  console.log(error);
+  return throwError(`error happened: ${error.error}`);
 }

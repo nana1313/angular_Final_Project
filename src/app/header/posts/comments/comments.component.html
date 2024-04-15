@@ -7,19 +7,22 @@
     />
     <h2>Title</h2>
     <div class="hrDiv"></div>
-    <p>1</p>
+    <p>{{ postTitle }}</p>
     <h2>Body</h2>
     <div class="hrDiv"></div>
-    <p class="firstText">2</p>
+    <p>{{ postBody }}</p>
     <button class="editBtn" (click)="openModal()" type="submit">Edit</button>
   </div>
   <app-modal [isOpen]="isModalOpen" (close)="closeModal()">
     <h2>Title</h2>
     <div class="hrDiv"></div>
-    <input class="updateInputs" />
+    <input class="updateInputs" [(ngModel)]="postTitle" />
     <h2>Body</h2>
     <div class="hrDiv"></div>
-    <textarea class="updateInputs"></textarea>
+    <textarea
+      class="updateTextarea updateInputs"
+      [(ngModel)]="postBody"
+    ></textarea>
     <div class="modal-footer">
       <button type="button" class="updateBtn" (click)="closeModal()">
         Update
@@ -45,7 +48,7 @@
         "
         [formGroup]="addCommentForm"
       >
-        <label class="nameLabel" for="name">Name</label>
+        <label class="nameLabel">Name</label>
         <input name="name" formControlName="userName" #name />
         <label>Body</label>
         <input formControlName="body" #commentBody />
