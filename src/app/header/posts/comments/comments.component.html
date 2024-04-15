@@ -7,12 +7,25 @@
     />
     <h2>Title</h2>
     <div class="hrDiv"></div>
-    <p></p>
+    <p>1</p>
     <h2>Body</h2>
     <div class="hrDiv"></div>
     <p class="firstText">2</p>
-    <button class="editBtn" type="submit">Edit</button>
+    <button class="editBtn" (click)="openModal()" type="submit">Edit</button>
   </div>
+  <app-modal [isOpen]="isModalOpen" (close)="closeModal()">
+    <h2>Title</h2>
+    <div class="hrDiv"></div>
+    <input class="updateInputs" />
+    <h2>Body</h2>
+    <div class="hrDiv"></div>
+    <textarea class="updateInputs"></textarea>
+    <div class="modal-footer">
+      <button type="button" class="updateBtn" (click)="closeModal()">
+        Update
+      </button>
+    </div>
+  </app-modal>
   <div class="commentsMainContainer">
     <div class="commentsContainer">
       <div *ngFor="let comment of comments" class="commentCardContainer">

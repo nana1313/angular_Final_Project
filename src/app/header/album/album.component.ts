@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Album } from 'src/app/interfaces/album.interface';
 import { ApiService } from 'src/app/services/api.service';
+import { AlbumServiceService } from 'src/app/services/album-service.service';
 import { User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
 import { Photo } from 'src/app/interfaces/photos.interface';
+import { PhotoService } from 'src/app/services/photo.service';
 // import { Router } from '@angular/router';
 @Component({
   selector: 'app-album',
@@ -11,7 +13,12 @@ import { Photo } from 'src/app/interfaces/photos.interface';
   styleUrls: ['./album.component.scss'],
 })
 export class AlbumComponent implements OnInit {
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(
+    private apiService: ApiService,
+    private albumService: AlbumServiceService,
+    private photoService: PhotoService,
+    private router: Router
+  ) {}
   Albums!: Album[];
   users!: User[];
   photos!: Photo[];
@@ -35,13 +42,13 @@ export class AlbumComponent implements OnInit {
   // return album;
   // return album ? album. : 0;
   ngOnInit(): void {
-    this.apiService.getAlbum().subscribe((Albums) => {
+    this.albumService.getAlbum().subscribe((Albums) => {
       this.Albums = Albums;
     });
     this.apiService.getUsers().subscribe((users) => {
       this.users = users;
     });
-    this.apiService.getPhotos().subscribe((photos) => {
+    this.photoService.getPhotos().subscribe((photos) => {
       this.photos = photos;
     });
   }

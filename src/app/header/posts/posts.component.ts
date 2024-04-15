@@ -22,7 +22,7 @@ export class PostsComponent implements OnInit {
   goToPost(postId: number): void {
     this.router.navigate(['/posts', postId]);
   }
-
+  isEditModalOpen = false;
   users!: User[];
   bodyText!: Body[];
   addPostForm: FormGroup;
@@ -37,6 +37,11 @@ export class PostsComponent implements OnInit {
       body: ['', [Validators.required]],
       author: ['', [Validators.required]],
     });
+  }
+  openEditModal(post: PostsComponent) {
+    // Open the edit post modal and set the selected post
+    this.isEditModalOpen = true;
+    // this.selectedPost = post;
   }
   onSubmit(formValue: any) {
     this.users = [

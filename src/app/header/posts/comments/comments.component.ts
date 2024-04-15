@@ -41,6 +41,15 @@ export class CommentsComponent implements OnInit {
     comments.unshift(newComment);
     localStorage.setItem('comments', JSON.stringify(comments));
   }
+  isModalOpen: boolean = false;
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
   addNewComment(name: String, commentBody: String) {
     if (!name.trim() || !commentBody.trim()) {
       return;
@@ -104,7 +113,7 @@ export class CommentsComponent implements OnInit {
 
       console.log(
         'Data => ',
-        this.bodyData?.find((Data) => +Data.id == +this.postId)
+        this.bodyData?.find((Data: any) => Data.id === +this.postId)
       );
       console.log('BodyDATA', this.bodyData);
       console.log('Post ID:', this.postId);
