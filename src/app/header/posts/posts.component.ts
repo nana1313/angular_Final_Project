@@ -16,9 +16,7 @@ export class PostsComponent implements OnInit {
   openPostForm() {
     this.isActive = !this.isActive;
   }
-  onSubmitAddingPost() {
-    // console.log(this.addPostForm.value);
-  }
+ 
   goToPost(postId: number): void {
     this.router.navigate(['/posts', postId]);
   }
@@ -39,9 +37,9 @@ export class PostsComponent implements OnInit {
     });
   }
   openEditModal(post: PostsComponent) {
-    // Open the edit post modal and set the selected post
+   
     this.isEditModalOpen = true;
-    // this.selectedPost = post;
+  
   }
   onSubmit(formValue: any) {
     this.users = [
@@ -63,11 +61,9 @@ export class PostsComponent implements OnInit {
       ...this.bodyText,
     ];
 
-    // Store data using your local storage service
     // this.localstorageService.saveData(title, value.title);
     // this.localstorageService.saveData(body, value.body);
-    // this.localstorageService.saveData(user, value.user);
-    // console.log('data', this.localstorageService.getData('postauthor'));
+    // this.localstorageService.saveData(user, value.user); 
   }
   get title() {
     return this.addPostForm.get('title');
@@ -80,18 +76,14 @@ export class PostsComponent implements OnInit {
   }
   newUser = '';
   storage = 'local-app';
-  // tbOnClick(userId: number, bodyId: number) {
-  //   console.log(userId, bodyId);
-  // }
+ 
   saveToLocalStorage(newPost: any) {
     let posts = JSON.parse(localStorage.getItem('posts') || '[]');
     posts.push(newPost);
     localStorage.setItem('posts', JSON.stringify(posts));
   }
 
-  // getUserName(id: number) {
-  //   return this.users.find((user) => user.id === this.bodyText[].userId)?.name;
-  // }
+  
   getUserName(userId: number): String {
     const user = this.users?.find((user) => user.id === userId);
     return user ? user.name : '';
@@ -114,7 +106,7 @@ export class PostsComponent implements OnInit {
       (response) => {
         console.log('New user and post added successfully:', response);
         this.saveToLocalStorage(newPost);
-        // this.bodyText = [newPost, …this.bodyText]
+        
         this.bodyText.push(newPost);
 
         this.addPostForm.reset();
@@ -126,7 +118,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //  this.LocalStore.saveData('postauthor', this.addPostForm.get('author'));
+   
     this.apiService.getUsers().subscribe((users) => {
       this.users = users;
     });

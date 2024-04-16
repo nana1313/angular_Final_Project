@@ -29,8 +29,5 @@ export class PhotosComponent implements OnInit {
         console.error('Error fetching photos:', error);
       }
     );
-    // this.apiService.getPhotos(this.parseNumber).subscribe((photos) => {
-    //   this.photos = photos;
-    // });
   }
 }

@@ -6,7 +6,7 @@ import { User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
 import { Photo } from 'src/app/interfaces/photos.interface';
 import { PhotoService } from 'src/app/services/photo.service';
-// import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
@@ -30,18 +30,13 @@ export class AlbumComponent implements OnInit {
   goToPhoto(albumId: Number): void {
     this.router.navigate(['/album', albumId]);
   }
-  // goToPhotos(albumId: number) {
-  //   this.router.navigate(['/photo', albumId]);
-  // }
+
   getPhotoNum(userId: Number): Number {
     return this.photos?.filter((photo) => {
-      // console.log(photo.albumId, userId);
       return photo.albumId === userId;
     }).length;
   }
-  // console.log(albumId, album);
-  // return album;
-  // return album ? album. : 0;
+
   ngOnInit(): void {
     this.albumService.getAlbum().subscribe((Albums) => {
       this.Albums = Albums;
@@ -50,10 +45,6 @@ export class AlbumComponent implements OnInit {
     this.apiService.getUsers().subscribe((users) => {
       this.users = users;
     });
-    // this.photoService.getPhotos().subscribe((photos) => {
-    //   this.photos = photos;
-    // });
-    // });
   }
   loadPhotosCount(): void {
     this.Albums.forEach((album) => {

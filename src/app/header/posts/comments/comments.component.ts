@@ -33,14 +33,7 @@ export class CommentsComponent implements OnInit {
     });
   }
   onSubmit(formValue: any) {
-    // this.comments = [
-    //   {
-    //     id: this.comments.length + 1,
-    //     name: formValue.userName,
-    //     body: '',
-    //   },
-    //   ...this.comments,
-    // ];
+  
   }
   saveToLocalStorage(newComment: any) {
     let comments = JSON.parse(localStorage.getItem('comments') || '[]');
@@ -72,7 +65,7 @@ export class CommentsComponent implements OnInit {
       (response) => {
         console.log('New user and post added successfully:', response);
         this.saveToLocalStorage(newComment);
-        // this.comments = [newPost, …this.comments]
+       
         this.comments.push(newComment);
 
         this.addCommentForm.reset();
@@ -82,30 +75,7 @@ export class CommentsComponent implements OnInit {
       }
     );
   }
-  // }
-
-  //   const newComment = {
-  //     // userId: this.users.length + 1,
-  //     userName: name.trim(),
-  //     body: commentBody.trim(),
-  //     // id: this.bodyText.length + 1,
-  //   };
-  // }
-
-  //   this.apiService.addNewComment(newPost).subscribe(
-  //     (response) => {
-  //       console.log('New user and post added successfully:', response);
-  //       this.saveToLocalStorage(newComment);
-  //       // this.comments = [newPost, …this.comments]
-  //       this.bodyText.push(newComment);
-
-  //       this.addPostForm.reset();
-  //     },
-  //     (error) => {
-  //       console.error('Error adding new user and post:', error);
-  //     }
-  //   );
-  // }
+ 
 
   ngOnInit(): void {
     this.apiService.getComments().subscribe((Comments) => {
@@ -117,7 +87,7 @@ export class CommentsComponent implements OnInit {
     console.log(this.bodyData);
     this.route.params.subscribe((params) => {
       this.postId = params['postId'];
-      // You can now use this.postId to fetch the specific post data
+     
 
       console.log(
         'Data => ',

@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse  } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, catchError, throwError } from 'rxjs';
 import { User } from '../interfaces/user.interface';
@@ -21,11 +21,6 @@ export class ApiService {
   getBody(): Observable<Body[]> {
     return this.http.get<Body[]>('https://jsonplaceholder.typicode.com/posts');
   }
-  // getAlbum(): Observable<Album[]> {
-  //   return this.http.get<Album[]>(
-  //     'https://jsonplaceholder.typicode.com/albums'
-  //   );
-  // }
 
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
@@ -80,8 +75,6 @@ export class ApiService {
       id: newPost.userId,
     };
 
-    // this.http.post('https://jsonplaceholder.typicode.com/posts', userDataBody);
-    // this.http.post('https://jsonplaceholder.typicode.com/users', userData);
     const userObservable = this.http.post(
       'https://jsonplaceholder.typicode.com/users',
       userData
