@@ -1,7 +1,7 @@
 <div class="backgroundContainer">
   <div class="contentMainContainer">
     <div class="contentCenter">
-      <div *ngFor="let photo of photos" class="content">
+      <div *ngFor="let photo of resolvedPhotos" class="content">
         <img [src]="photo.url" />
         <p><span>Title: </span>{{ photo.title }}</p>
       </div>

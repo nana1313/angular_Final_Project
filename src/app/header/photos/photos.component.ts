@@ -12,6 +12,7 @@ export class PhotosComponent implements OnInit {
   photos!: Photo[];
   constructor(private apiService: PhotoService) {}
   parseNumber!: number;
+  resolvedPhotos: Photo[] = [];
   photos$: Observable<Photo[]> | null = null;
   ngOnInit(): void {
     const currentUrl = window.location.href;
@@ -20,6 +21,14 @@ export class PhotosComponent implements OnInit {
       this.parseNumber = parseInt(matches[0], 10);
     }
     this.photos$ = this.apiService.getPhotos(this.parseNumber);
+    this.photos$.subscribe(
+      (photos) => {
+        this.resolvedPhotos = photos;
+      },
+      (error) => {
+        console.error('Error fetching photos:', error);
+      }
+    );
     // this.apiService.getPhotos(this.parseNumber).subscribe((photos) => {
     //   this.photos = photos;
     // });
