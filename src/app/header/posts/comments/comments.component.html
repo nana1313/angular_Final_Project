@@ -7,11 +7,11 @@
     />
     <h2>Title</h2>
     <div class="hrDiv"></div>
-    <p>{{ postTitle }}</p>
+    <p class="h2-txt">{{ postTitle }}</p>
     <h2>Body</h2>
     <div class="hrDiv"></div>
     <p>{{ postBody }}</p>
-    <button class="editBtn" (click)="openModal()" type="submit">Edit</button>
+    <button class="editBtn" (click)="openModal()" type="submit">EDIT</button>
   </div>
   <app-modal [isOpen]="isModalOpen" (close)="closeModal()">
     <h2>Title</h2>

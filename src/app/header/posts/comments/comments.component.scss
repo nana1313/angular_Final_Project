@@ -1,7 +1,11 @@
+@font-face {
+  font-family: jost;
+  src: url(../../../../assets/font/Jost-Regular.ttf);
+}
 .backgroundContainer {
   width: 100vw;
   height: 100vh;
-  background-image: url(../../../../assets/imgs/backgr.png);
+  background-image: url(../../../../assets/imgs/pattern.jpg);
   border-top: 1px solid gray;
   display: flex;
   gap: 30px;
@@ -26,6 +30,10 @@
 }
 h2 {
   color: #0066ff;
+  font-family: jost;
+}
+.h2-txt{
+  font-family: jost;
 }
 .firstText {
   margin-top: 25px;
@@ -67,6 +75,8 @@ h2 {
   height: fit-content;
   border: none;
   margin-top: 40px;
+  font-family: jost;
+  font-style: bold;
 }
 .backArrow {
   width: 15px;

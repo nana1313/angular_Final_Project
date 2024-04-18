@@ -1,7 +1,7 @@
 .backgroundContainer {
   width: 100vw;
   height: fit-content;
-  background-image: url(../../../assets/imgs/backgr.png);
+  background-image: url(../../../assets/imgs/pattern.jpg);
   border-top: 1px solid gray;
 }
 .contentMainContainer {
@@ -37,10 +37,15 @@ img {
   border-radius: 10px;
 }
 span {
-  color: aqua;
+  color: #5c8fe0;
   margin: 0px 5x;
 }
 p {
   color: black;
   font-weight: bold;
+}
+@media(max-width: 720px){
+  .contentCenter{
+    grid-template-columns: 300px 300px;
+  }
 }

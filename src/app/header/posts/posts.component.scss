@@ -1,3 +1,7 @@
+@font-face {
+  font-family: jost;
+  src: url(../../../assets/font/Jost-Regular.ttf);
+}
 * {
   padding: 0;
   box-sizing: border-box;
@@ -7,7 +11,7 @@
 .backgroundContainer {
   width: 100vw;
   height: fit-content;
-  background-image: url(../../../assets/imgs/backgr.png);
+  background-image: url(../../../assets/imgs/pattern.jpg);
   border-top: 1px solid gray;
 }
 .buttonDiv {
@@ -40,8 +44,8 @@
 form {
   display: flex;
   flex-direction: column;
-  background-color: rgb(31, 158, 255);
-  width: 25%;
+  background-color: #5c8fe0;
+  width: 40%;
   height: fit-content;
   padding-bottom: 15px;
   border-radius: 10px;
@@ -50,7 +54,9 @@ form {
 }
 input {
   width: 95%;
+  height: 30px;
   margin-top: 10px;
+  border: none;
 }
 label {
   display: flex;
@@ -59,6 +65,7 @@ label {
   margin-top: 10px;
   color: white;
   font-family: sans-serif;
+  font-family: jost;
 }
 .addBtn {
   padding: 10px 15px;
